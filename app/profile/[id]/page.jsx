@@ -2,11 +2,12 @@
 
 import Profile from "@components/Profile";
 import { useSession } from "next-auth/react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 function UserProfile() {
   const { id } = useParams();
+  const name = useSearchParams().get("name");
   const [posts, setPosts] = useState([]);
   const { data: session } = useSession();
   const router = useRouter();
@@ -26,8 +27,8 @@ function UserProfile() {
   }, []);
   return (
     <Profile
-      name=""
-      desc="Welcome to your personalized profile page"
+      name={name}
+      desc={`Welcome to ${name}'s profile page`}
       data={posts}
     />
   );

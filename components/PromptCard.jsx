@@ -27,7 +27,9 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
           />
 
           <div className="flex flex-col">
-            <Link href={`/profile/${post.creator._id}`}>
+            <Link
+              href={`/profile/${post.creator._id}?name=${post.creator.username}`}
+            >
               <h3 className="font-satoshi font-semibold text-gray-900">
                 {post.creator.username}
               </h3>
